@@ -67,23 +67,17 @@ button{font:inherit;}
 .policy-back a{color:var(--color-btn);text-decoration:underline;font-size:0.95rem;}
 
 /* FOOTER */
-.site-footer{border-top:1px solid var(--color-border);margin-top:20px;}
-.footer-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);max-width:var(--container);margin:0 auto;}
-.footer-col{padding:50px 40px;border-right:1px solid var(--color-border);}
-.footer-col:last-child{border-right:none;}
-.footer-col p{margin-bottom:6px;font-size:0.95rem;}
-.footer-col p a:hover{text-decoration:underline;}
-.footer-links{display:flex;flex-direction:column;gap:10px;}
+.site-footer{border-top:1px solid var(--color-border);}
+.footer-bar{display:flex;align-items:center;justify-content:space-between;gap:20px 32px;flex-wrap:wrap;padding:32px 0;}
+.footer-links{display:flex;gap:28px;flex-wrap:wrap;}
 .footer-links a:hover{text-decoration:underline;}
-.footer-bottom{border-top:1px solid var(--color-border);padding:20px 40px;text-align:right;font-size:0.85rem;color:var(--color-text-light);max-width:var(--container);margin:0 auto;}
+.footer-copyright{font-size:0.85rem;color:var(--color-text-light);opacity:.7;}
 
 @media (max-width:900px){
   .header-inner{padding:16px 20px;}
   .container{padding:0 22px;}
   .policy-content{padding:26px 22px;}
-  .footer-grid{grid-template-columns:1fr;}
-  .footer-col{border-right:none;border-bottom:1px solid var(--color-border);}
-  .footer-bottom{text-align:left;padding:20px 22px;}
+  .footer-links{gap:18px 24px;}
   .header-nav{gap:18px;}
 }
 
@@ -99,8 +93,7 @@ button{font:inherit;}
   .policy-updated{margin-bottom:24px;}
   .policy-content{padding:22px 18px;}
 
-  .footer-col{padding:32px 18px;}
-  .footer-bottom{padding:16px 18px;}
+  .footer-bar{padding:24px 0;}
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -160,23 +153,13 @@ button{font:inherit;}
 </main>
 
 <footer class="site-footer">
-  <div class="footer-grid">
-    <div class="footer-col">
-      <p><a href="tel:+15817441027">581 - 744 - 1027</a></p>
-      <p><a href="mailto:julidesroches@hotmail.com">julidesroches@hotmail.com</a></p>
-    </div>
-    <div class="footer-col">
-      <p>603 15e Avenue, Beauceville,</p>
-      <p>QC G5X 1G7</p>
-    </div>
-    <div class="footer-col footer-links">
+  <div class="container footer-bar">
+    <div class="footer-links">
       <a href="privacy-policy.html">Politique de confidentialité</a>
       <a href="accessibility-statement.html">Déclaration d'accessibilité</a>
       <a href="terms-conditions.html">Modalités et conditions</a>
     </div>
-  </div>
-  <div class="footer-bottom">
-    <p>&copy; <span id="year"></span> La Belle Dame.</p>
+    <p class="footer-copyright">&copy; <span id="year"></span> La Belle Dame.</p>
   </div>
 </footer>
 

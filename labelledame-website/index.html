@@ -41,7 +41,7 @@ ul{list-style:none;}
 a{color:inherit;text-decoration:none;}
 button{font:inherit;}
 .container{max-width:var(--container);margin:0 auto;padding:0 40px;}
-#home,#about,#realisations,#contact{scroll-margin-top:calc(var(--header-h) + 20px);}
+#home,#about,#realisations,#partenaires,#contact{scroll-margin-top:calc(var(--header-h) + 20px);}
 
 .skip-link{position:absolute;left:-999px;top:0;background:#111;color:#fff;padding:10px 16px;z-index:999;}
 .skip-link:focus{left:10px;top:10px;}
@@ -76,96 +76,111 @@ button{font:inherit;}
 .hero-intro ul li::before{content:'•';position:absolute;left:2px;}
 
 /* ============================================================
-   ABOUT — image bleeds to the true right edge of the viewport
+   ABOUT — image keeps its own natural ratio, no forced cropping
    ============================================================ */
-.about{padding-top:100px;border-top:1px solid var(--color-border);}
-.about-grid{display:grid;grid-template-columns:minmax(280px,560px) minmax(0,1fr);margin-top:40px;}
-.about-text{padding:10px 60px 100px max(40px,calc((100vw - var(--container))/2 + 40px));display:flex;flex-direction:column;justify-content:center;gap:28px;}
+.about{padding:100px 0;border-top:1px solid var(--color-border);}
+.about-grid{display:grid;grid-template-columns:minmax(280px,520px) minmax(240px,480px);gap:48px;margin-top:40px;align-items:start;}
+.about-text{display:flex;flex-direction:column;justify-content:center;gap:28px;}
 .about-block{display:flex;flex-direction:column;gap:8px;}
-.about-block h3{font-family:var(--font-heading);color:var(--color-heading);font-weight:700;font-size:1.25rem;}
-.about-image{position:relative;min-height:560px;}
-.about-image img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.about-block h3{font-family:var(--font-heading);color:var(--color-heading);font-weight:700;font-size:1.25rem;line-height:1.2;}
+.about-image img{width:100%;height:auto;display:block;border:1px solid var(--color-border);}
 
 /* ============================================================
-   RÉALISATION
+   RÉALISATION — even split, tighter gap so text and photo read
+   as one balanced composition instead of two separate halves
    ============================================================ */
 .realisations{padding:100px 0;border-top:1px solid var(--color-border);background:var(--color-bg-alt);}
-.realisations-grid{display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,1.3fr) minmax(0,0.9fr);gap:44px;align-items:start;}
+.realisations-grid{display:grid;grid-template-columns:minmax(280px,420px) minmax(320px,580px);gap:48px;align-items:center;}
+.realisations-text{display:flex;flex-direction:column;gap:22px;}
 .realisations-intro{font-size:1.3rem;color:var(--color-text);font-weight:400;}
 .realisations-list{display:flex;flex-direction:column;gap:10px;}
 .realisations-list li{font-weight:700;font-size:1.02rem;padding-left:18px;position:relative;}
 .realisations-list li::before{content:'•';position:absolute;left:2px;color:var(--color-accent);}
-.realisations-image img{width:100%;height:auto;}
+.realisations-image img{width:100%;height:auto;display:block;border:1px solid var(--color-border);}
 
 /* ============================================================
-   CONTACTS
+   PARTENAIRES — logo, title, short blurb, and a link/visit button
+   per partner. Fixed 3-column track even with only one filled in,
+   so this one sits at left with room reserved for more later.
    ============================================================ */
-.contact{padding:100px 0;border-top:1px solid var(--color-border);}
-.contact-card{border:1px solid var(--color-border);background:var(--color-bg-card);padding:44px;max-width:640px;}
-.contact-intro{margin-bottom:32px;max-width:560px;font-size:1.05rem;}
-.contact-details{display:flex;flex-direction:column;gap:18px;}
-.contact-details dt{font-family:var(--font-heading);font-weight:600;font-size:0.8rem;color:var(--color-text-light);opacity:.6;text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px;}
+.partners{padding:100px 0;border-top:1px solid var(--color-border);}
+.partners-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:56px;margin-top:44px;}
+.partner-card{display:flex;flex-direction:column;align-items:flex-start;gap:12px;}
+.partner-header{display:flex;align-items:center;gap:14px;}
+.partner-logo{height:38px;width:auto;max-width:160px;object-fit:contain;object-position:left center;}
+.partner-card h3{font-family:var(--font-heading);color:var(--color-heading);font-weight:700;font-size:1.15rem;}
+.partner-card p{font-size:0.95rem;max-width:340px;}
+.partner-link{display:inline-flex;align-items:center;gap:8px;color:var(--color-heading);font-family:var(--font-heading);font-weight:600;font-size:0.95rem;margin-top:4px;transition:color .2s;}
+.partner-link:hover{color:var(--color-accent);}
+.partner-link svg{flex-shrink:0;}
+
+/* ============================================================
+   CONTACTS — wide, thin bar spanning the container instead of
+   a tall boxed card sitting at the left
+   ============================================================ */
+.contact{padding:100px 0;border-top:1px solid var(--color-border);background:var(--color-bg-alt);}
+.contact-card{border:1px solid var(--color-border);background:var(--color-bg-card);padding:36px 44px;display:flex;align-items:center;justify-content:space-between;gap:48px;flex-wrap:wrap;}
+.contact-intro{margin:0;max-width:300px;font-size:1.05rem;}
+.contact-details{display:grid;grid-template-columns:repeat(2,minmax(180px,1fr));gap:28px 48px;}
+.contact-details>div{display:flex;flex-direction:column;gap:8px;}
+.contact-details dt{font-family:var(--font-heading);font-weight:600;font-size:0.8rem;color:var(--color-text-light);opacity:.6;text-transform:uppercase;letter-spacing:.5px;}
 .contact-details dd{font-size:1.1rem;}
 .contact-details a{color:var(--color-btn);text-decoration:underline;}
 
 /* ============================================================
-   FOOTER
+   FOOTER — legal links + copyright only; contact details live
+   in the Contact section above, not duplicated down here
    ============================================================ */
-.site-footer{border-top:1px solid var(--color-border);margin-top:20px;}
-.footer-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);max-width:var(--container);margin:0 auto;}
-.footer-col{padding:50px 40px;border-right:1px solid var(--color-border);}
-.footer-col:last-child{border-right:none;}
-.footer-col p{margin-bottom:6px;font-size:0.95rem;}
-.footer-col p a:hover{text-decoration:underline;}
-.footer-links{display:flex;flex-direction:column;gap:10px;}
+.site-footer{border-top:1px solid var(--color-border);}
+.footer-bar{display:flex;align-items:center;justify-content:space-between;gap:20px 32px;flex-wrap:wrap;padding:32px 0;}
+.footer-links{display:flex;gap:28px;flex-wrap:wrap;}
 .footer-links a:hover{text-decoration:underline;}
-.footer-bottom{border-top:1px solid var(--color-border);padding:20px 40px;text-align:right;font-size:0.85rem;color:var(--color-text-light);max-width:var(--container);margin:0 auto;}
+.footer-copyright{font-size:0.85rem;color:var(--color-text-light);opacity:.7;}
 
 /* ============================================================
-   RESPONSIVE — basic reflow only; mobile/tablet pass is a later step
+   RESPONSIVE — tablet: single-column grids, tighter nav gap
    ============================================================ */
 @media (max-width:900px){
   .header-inner{padding:16px 20px;}
   .container{padding:0 22px;}
-  .about-grid{grid-template-columns:1fr;}
-  .about-text{padding:10px 22px 40px 22px;}
-  .about-image{min-height:320px;}
+  .about-grid{grid-template-columns:1fr;gap:32px;}
+  .about-image{max-width:380px;margin:0 auto;}
   .realisations-grid{grid-template-columns:1fr;gap:24px;}
-  .realisations-image{max-width:280px;}
-  .contact-card{padding:26px;}
-  .footer-grid{grid-template-columns:1fr;}
-  .footer-col{border-right:none;border-bottom:1px solid var(--color-border);}
-  .footer-bottom{text-align:left;padding:20px 22px;}
-  .header-nav{gap:18px;}
+  .partners-grid{grid-template-columns:1fr;gap:40px;}
+  .contact-card{padding:26px;flex-direction:column;align-items:flex-start;gap:28px;}
+  .footer-links{gap:18px 24px;}
+  .header-nav{gap:10px 18px;}
 }
 
 /* ============================================================
-   PHONE — stacked/centered header+nav and tighter section spacing
+   PHONE — stacked/centered header+nav, single-column contact
+   details, and centered footer
    ============================================================ */
 @media (max-width:600px){
   .container{padding:0 18px;}
 
   .header-inner{flex-direction:column;justify-content:center;align-items:center;gap:12px;padding:14px 18px;text-align:center;}
   .brand-lockup{gap:14px;}
-  .header-nav{justify-content:center;gap:14px 22px;}
+  .header-nav{justify-content:center;gap:10px 16px;}
   .header-nav a{padding:6px 4px;}
 
   .hero{min-height:92svh;}
   .hero-content{padding:44px 20px;}
   .hero-intro{margin-top:36px;}
 
-  .about{padding-top:56px;padding-bottom:40px;}
-  .about-text{padding:8px 18px 28px;}
-  .about-image{min-height:260px;}
+  .about{padding:56px 0;}
 
   .realisations{padding:60px 0;}
-  .realisations-image{max-width:none;margin:24px 0 0;}
+
+  .partners{padding:56px 0;}
+  .partner-header{flex-wrap:wrap;row-gap:8px;}
 
   .contact{padding:60px 0;}
-  .contact-card{padding:22px;}
+  .contact-card{padding:22px;gap:24px;}
+  .contact-details{grid-template-columns:1fr;gap:20px;}
 
-  .footer-col{padding:32px 18px;}
-  .footer-bottom{padding:16px 18px;}
+  .footer-bar{flex-direction:column;align-items:center;gap:16px;padding:24px 0;text-align:center;}
+  .footer-links{justify-content:center;}
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -187,6 +202,7 @@ button{font:inherit;}
       <a href="#home">Accueil</a>
       <a href="#about">À propos</a>
       <a href="#realisations">Réalisation</a>
+      <a href="#partenaires">Partenaires</a>
       <a href="#contact">Contacts</a>
     </nav>
   </div>
@@ -212,43 +228,63 @@ button{font:inherit;}
 
 <section class="about">
   <div class="container">
-    <h2 class="section-heading">À propos</h2>
-  </div>
-  <div class="about-grid" id="about">
-    <div class="about-text">
-      <div class="about-block">
-        <h3>L'entreprise</h3>
-        <p>L'argent peut construire de vastes murs et acheter le prestige du neuf, mais seul le charme des vieilles maisons et leur chaleur authentique créent un véritable foyer. C'est entre ces murs chargés d'histoire que naissent les souvenirs les plus précieux. Un espace enveloppé de souvenirs offre un refuge rassurant où l'on se sent profondément chez soi. La richesse d'un intérieur ne se mesure pas à son prix, mais à l'âme du lieu et aux rires qui y résonnent chaque jour.</p>
+    <h2 class="section-heading" id="about">À propos</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="about-block">
+          <h3>L'entreprise</h3>
+          <p>L'argent peut construire de vastes murs et acheter le prestige du neuf, mais seul le charme des vieilles maisons et leur chaleur authentique créent un véritable foyer. C'est entre ces murs chargés d'histoire que naissent les souvenirs les plus précieux. Un espace enveloppé de souvenirs offre un refuge rassurant où l'on se sent profondément chez soi. La richesse d'un intérieur ne se mesure pas à son prix, mais à l'âme du lieu et aux rires qui y résonnent chaque jour.</p>
+        </div>
+        <div class="about-block">
+          <h3>Mission</h3>
+          <p>Notre mission est de rendre la propriété accessible à tous en proposant des maisons à un prix juste. Nous croyons que chacun mérite de devenir propriétaire sans avoir à sacrifier son équilibre financier. Ensemble, transformons votre rêve immobilier en une réalité accessible et sereine.</p>
+        </div>
+        <div class="about-block">
+          <h3>Service</h3>
+          <p>Notre service consiste à redonner vie aux maisons ancestrales en les vidant, les nettoyant et en réalisant les rénovations mineures nécessaires à leur préservation. Nous préparons avec soin ces demeures chargées d'histoire pour les transmettre à de nouveaux propriétaires passionnés. Notre but est de vous passer le flambeau pour que vous puissiez continuer à les entretenir et à les façonner à votre goût.</p>
+        </div>
       </div>
-      <div class="about-block">
-        <h3>Mission</h3>
-        <p>Notre mission est de rendre la propriété accessible à tous en proposant des maisons à un prix juste. Nous croyons que chacun mérite de devenir propriétaire sans avoir à sacrifier son équilibre financier. Ensemble, transformons votre rêve immobilier en une réalité accessible et sereine.</p>
+      <div class="about-image">
+        <img src="images/about_me.jpg" alt="Portrait devant une maison ancestrale">
       </div>
-      <div class="about-block">
-        <h3>Service</h3>
-        <p>Notre service consiste à redonner vie aux maisons ancestrales en les vidant, les nettoyant et en réalisant les rénovations mineures nécessaires à leur préservation. Nous préparons avec soin ces demeures chargées d'histoire pour les transmettre à de nouveaux propriétaires passionnés. Notre but est de vous passer le flambeau pour que vous puissiez continuer à les entretenir et à les façonner à votre goût.</p>
-      </div>
-    </div>
-    <div class="about-image">
-      <img src="images/about_me.jpg" alt="Maison ancestrale rénovée avec soin">
     </div>
   </div>
 </section>
 
 <section class="realisations">
   <div class="container">
-    <h2 class="section-heading">Réalisation</h2>
-    <div class="realisations-grid" id="realisations">
-      <p class="realisations-intro">Nous acquérons des maisons chargées d'histoire au cœur des magnifiques régions de Québec et de la Chaudière-Appalaches. Notre engagement est de préserver ce patrimoine local unique pour le transmettre à la prochaine génération de propriétaires.</p>
-      <ul class="realisations-list">
-        <li>Maisons choisies avec soin, chargées d'histoire</li>
-        <li>Situées au cœur de Québec et de la Chaudière-Appalaches</li>
-        <li>Un engagement envers la préservation du patrimoine local</li>
-        <li>Une transmission pensée pour la prochaine génération</li>
-      </ul>
+    <h2 class="section-heading" id="realisations">Réalisation</h2>
+    <div class="realisations-grid">
+      <div class="realisations-text">
+        <p class="realisations-intro">Nous acquérons des maisons chargées d'histoire au cœur des magnifiques régions de Québec et de la Chaudière-Appalaches. Notre engagement est de préserver ce patrimoine local unique pour le transmettre à la prochaine génération de propriétaires.</p>
+        <ul class="realisations-list">
+          <li>Maisons choisies avec soin, chargées d'histoire</li>
+          <li>Situées au cœur de Québec et de la Chaudière-Appalaches</li>
+          <li>Un engagement envers la préservation du patrimoine local</li>
+          <li>Une transmission pensée pour la prochaine génération</li>
+        </ul>
+      </div>
       <div class="realisations-image">
-        <!-- Drop your photo in the images/ folder named exactly "accomplishments.jpg" and it'll appear here. -->
         <img src="images/accomplishments.jpg" alt="Maison ancestrale au cœur de la Chaudière-Appalaches">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="partners">
+  <div class="container">
+    <h2 class="section-heading" id="partenaires">Partenaires</h2>
+    <div class="partners-grid">
+      <div class="partner-card">
+        <div class="partner-header">
+          <img class="partner-logo" src="images/logo.png" alt="Logo L10 de Layten">
+          <h3>Réparations Layten</h3>
+        </div>
+        <p>Layten offre des services de diagnostic, de dépannage et de réparation pour téléphones, ordinateurs, consoles de jeux et une grande variété d'appareils électroniques.</p>
+        <a href="https://laytenrepairs.ca" class="partner-link" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9 15L15 9M15 9H10M15 9V14"/></svg>
+          Visiter
+        </a>
       </div>
     </div>
   </div>
@@ -256,8 +292,8 @@ button{font:inherit;}
 
 <section class="contact">
   <div class="container">
-    <h2 class="section-heading">Contacts</h2>
-    <div class="contact-card" id="contact">
+    <h2 class="section-heading" id="contact">Contacts</h2>
+    <div class="contact-card">
       <p class="contact-intro">Vous songez à vendre une maison ancestrale, ou vous cherchez à en acquérir une? Nous serions heureux d'en discuter avec vous.</p>
       <dl class="contact-details">
         <div>
@@ -284,23 +320,13 @@ button{font:inherit;}
 </main>
 
 <footer class="site-footer">
-  <div class="footer-grid">
-    <div class="footer-col">
-      <p><a href="tel:+15817441027">581 - 744 - 1027</a></p>
-      <p><a href="mailto:julidesroches@hotmail.com">julidesroches@hotmail.com</a></p>
-    </div>
-    <div class="footer-col">
-      <p>603 15e Avenue, Beauceville,</p>
-      <p>QC G5X 1G7</p>
-    </div>
-    <div class="footer-col footer-links">
+  <div class="container footer-bar">
+    <div class="footer-links">
       <a href="privacy-policy.html">Politique de confidentialité</a>
       <a href="accessibility-statement.html">Déclaration d'accessibilité</a>
       <a href="terms-conditions.html">Modalités et conditions</a>
     </div>
-  </div>
-  <div class="footer-bottom">
-    <p>&copy; <span id="year"></span> La Belle Dame.</p>
+    <p class="footer-copyright">&copy; <span id="year"></span> La Belle Dame.</p>
   </div>
 </footer>
 
